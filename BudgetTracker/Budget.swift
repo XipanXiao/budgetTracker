@@ -11,15 +11,15 @@ import CoreData
 
 class Budget: NSManagedObject {
 
-    @NSManaged var byweekly_salary: NSDecimalNumber
-    @NSManaged var clothing_expense: NSDecimalNumber
-    @NSManaged var daily_expense: NSDecimalNumber
-    @NSManaged var education_expense: NSDecimalNumber
-    @NSManaged var entertainment_expense: NSDecimalNumber
-    @NSManaged var initial_saving_account: NSDecimalNumber
-    @NSManaged var monthly_budget_allocation: NSDecimalNumber
-    @NSManaged var monthly_clothing_deposit: NSDecimalNumber
-    @NSManaged var monthly_education_deposit: NSDecimalNumber
-    @NSManaged var monthly_entertainment_deposit: NSDecimalNumber
+    @NSManaged var byweekly_salary: NSNumber
+    @NSManaged var clothing_expense: NSNumber
+    @NSManaged var daily_expense: NSNumber
+    @NSManaged var education_expense: NSNumber
+    @NSManaged var entertainment_expense: NSNumber
+    @NSManaged var initial_saving_account: NSNumber
+    @NSManaged var monthly_budget_allocation: NSNumber
+    @NSManaged var monthly_clothing_deposit: NSNumber
+    @NSManaged var monthly_education_deposit: NSNumber
+    @NSManaged var monthly_entertainment_deposit: NSNumber
 
 }

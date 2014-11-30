@@ -21,11 +21,9 @@ class CategoryDataSource: NSObject, UIPickerViewDataSource, UIPickerViewDelegate
     }
     
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        print(categories.count)
         return categories.count
     }
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
-        print(categories[row])
         return categories[row]
     }
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -37,7 +35,14 @@ class ViewController: UIViewController {
     @IBOutlet weak var dateLabel: UITextField!
     @IBOutlet weak var category: UITextField!
     @IBOutlet weak var expenseInput: UITextField!
+    @IBOutlet weak var budgetBalance: UIProgressView!
+    @IBOutlet weak var savingBalance: UIProgressView!
+    @IBOutlet weak var savingLabel: UILabel!
+    @IBOutlet weak var budgetLabel: UILabel!
+    @IBOutlet weak var expense: UITextField!
+
     var categoryDataSource: CategoryDataSource!
+    var budget: Budget!
     
     lazy var managedObjectContext : NSManagedObjectContext? = {
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
@@ -47,17 +52,18 @@ class ViewController: UIViewController {
         else {
             return nil
         }
-        }()
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         let newItem = NSEntityDescription.insertNewObjectForEntityForName("Budget", inManagedObjectContext: self.managedObjectContext!) as Budget
 
-        initUI(newItem)
+        budget = newItem
+        initUI()
     }
     
-    func initUI(budget: Budget) {
+    func initUI() {
         categoryDataSource = CategoryDataSource(categoryLabel: category)
         var categoryPickerView: UIPickerView = UIPickerView()
         categoryPickerView.dataSource = categoryDataSource
@@ -70,6 +76,33 @@ class ViewController: UIViewController {
         dateLabel.inputView = DatePickerView
         DatePickerView.addTarget(self, action: Selector("dateChanged:"), forControlEvents: UIControlEvents.ValueChanged)
         dateLabel.text = dateToString(NSDate())
+        
+        initUIData()
+    }
+    
+    func nextLevel(value: NSNumber) -> NSNumber {
+        if(value <= 0) {
+            return 10.0;
+        }
+
+        return powf(10,round(log10(value)))
+    }
+    
+    func initUIData() {
+        if (budget.monthly_budget_allocation == 0) {
+            budget.monthly_budget_allocation = 2000
+            budget.monthly_clothing_deposit = 200
+            budget.monthly_education_deposit = 100
+            budget.monthly_entertainment_deposit = 100
+            budget.initial_saving_account = 45000
+            budget.byweekly_salary = 3650
+        }
+
+        budgetLabel.text = "Budget balance (\(budget.daily_expense.doubleValue)/\(budget.monthly_budget_allocation.doubleValue)):"
+        budgetBalance.progress = budget.daily_expense/budget.monthly_budget_allocation
+        
+        savingLabel.text = "Saving balance (\(budget.initial_saving_account.doubleValue)):"
+        savingBalance.progress = budget.initial_saving_account/nextLevel(budget.initial_saving_account);
     }
 
     override func didReceiveMemoryWarning() {
@@ -81,7 +114,6 @@ class ViewController: UIViewController {
         var dateFormatter = NSDateFormatter()
         
         dateFormatter.dateFormat = "YYYY-MM-dd"
-        //dateFormatter.timeStyle = NSDateFormatterStyle.ShortStyle
         
         return dateFormatter.stringFromDate(date)
     }
@@ -93,6 +125,28 @@ class ViewController: UIViewController {
         dateLabel.resignFirstResponder()
         category.resignFirstResponder()
         expenseInput.resignFirstResponder()
+    }
+
+    @IBAction func onAddExpense(sender: AnyObject) {
+        var spending = NSString(string: expense.text).doubleValue
+        switch (category.text) {
+        case categoryDataSource.categories[0]://daily
+            budget.daily_expense = NSNumber(double: budget.daily_expense.doubleValue + spending)
+            break;
+        case categoryDataSource.categories[1]://education
+            budget.education_expense = NSNumber(double: budget.education_expense.doubleValue + spending)
+            break;
+        case categoryDataSource.categories[2]://clothing
+            budget.clothing_expense = NSNumber(double: budget.clothing_expense.doubleValue + spending)
+            break;
+        case categoryDataSource.categories[3]://entertainment
+            budget.entertainment_expense = NSNumber(double: budget.entertainment_expense.doubleValue + spending)
+            break;
+        default:
+            break
+        }
+
+        initUIData()
     }
 }
 

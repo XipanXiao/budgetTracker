@@ -17,8 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Monthly budget balance (0/0):" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BnV-iR-5tB">
-                                <rect key="frame" x="20" y="30" width="230" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Budget balance (0/0):" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BnV-iR-5tB">
+                                <rect key="frame" x="20" y="30" width="276" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -26,8 +26,8 @@
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Kho-Wt-9ln">
                                 <rect key="frame" x="16" y="80" width="280" height="2"/>
                             </progressView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Saving account balance (0):" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k1n-yM-fSR">
-                                <rect key="frame" x="18" y="108" width="212" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Saving balance (0):" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k1n-yM-fSR">
+                                <rect key="frame" x="18" y="108" width="285" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -75,6 +75,9 @@
                                 <state key="normal" title="Add expense">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="onAddExpense:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HLd-0o-1VU"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7QU-xX-NKg">
                                 <rect key="frame" x="124" y="373" width="139" height="30"/>
@@ -106,9 +109,14 @@
                         </connections>
                     </view>
                     <connections>
+                        <outlet property="budgetBalance" destination="Kho-Wt-9ln" id="2es-zv-syC"/>
+                        <outlet property="budgetLabel" destination="BnV-iR-5tB" id="PhY-Bg-6JG"/>
                         <outlet property="category" destination="n6b-DG-wJy" id="Bft-Oc-N4a"/>
                         <outlet property="dateLabel" destination="7QU-xX-NKg" id="luJ-Lx-4Ih"/>
+                        <outlet property="expense" destination="JAQ-s2-Mox" id="fzZ-gg-p0H"/>
                         <outlet property="expenseInput" destination="JAQ-s2-Mox" id="AdU-dA-iet"/>
+                        <outlet property="savingBalance" destination="T4a-qy-IOT" id="Dvk-TM-xah"/>
+                        <outlet property="savingLabel" destination="k1n-yM-fSR" id="ERx-NJ-Zcs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
