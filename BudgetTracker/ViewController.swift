@@ -40,6 +40,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var savingLabel: UILabel!
     @IBOutlet weak var budgetLabel: UILabel!
     @IBOutlet weak var expense: UITextField!
+    @IBOutlet weak var entertainFundLabel: UILabel!
+    @IBOutlet weak var educationFundLabel: UILabel!
+    @IBOutlet weak var clothingFundLabel: UILabel!
+    @IBOutlet weak var savingFundLabel: UILabel!
 
     var categoryDataSource: CategoryDataSource!
     var budget: Budget!
@@ -103,6 +107,11 @@ class ViewController: UIViewController {
         
         savingLabel.text = "Saving balance (\(budget.initial_saving_account.doubleValue)):"
         savingBalance.progress = budget.initial_saving_account/nextLevel(budget.initial_saving_account);
+        
+        entertainFundLabel.text = budget.entertainment_fund.stringValue
+        educationFundLabel.text = budget.education_fund.stringValue
+        clothingFundLabel.text = budget.clothing_fund.stringValue
+        savingFundLabel.text = budget.initial_saving_account.stringValue
     }
 
     override func didReceiveMemoryWarning() {

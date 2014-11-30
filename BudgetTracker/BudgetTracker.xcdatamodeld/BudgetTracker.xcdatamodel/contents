@@ -3,9 +3,12 @@
     <entity name="Budget" representedClassName="BudgetTracker.Budget" syncable="YES">
         <attribute name="byweekly_salary" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="clothing_expense" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="clothing_fund" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="daily_expense" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="education_expense" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="education_fund" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="entertainment_expense" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="entertainment_fund" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="initial_saving_account" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="monthly_budget_allocation" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="monthly_clothing_deposit" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
@@ -13,6 +16,6 @@
         <attribute name="monthly_entertainment_deposit" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Budget" positionX="-63" positionY="-18" width="128" height="195"/>
+        <element name="Budget" positionX="-63" positionY="-18" width="128" height="240"/>
     </elements>
 </model>

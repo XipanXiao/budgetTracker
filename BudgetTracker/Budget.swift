@@ -21,5 +21,8 @@ class Budget: NSManagedObject {
     @NSManaged var monthly_clothing_deposit: NSNumber
     @NSManaged var monthly_education_deposit: NSNumber
     @NSManaged var monthly_entertainment_deposit: NSNumber
+    @NSManaged var entertainment_fund: NSNumber
+    @NSManaged var education_fund: NSNumber
+    @NSManaged var clothing_fund: NSNumber
 
 }
