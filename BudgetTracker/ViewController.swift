@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 class CategoryDataSource: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
-    let categories = ["Daily", "Education", "Clothing", "Entertainment"]
+    let categories = ["Daily", "Education", "Clothing", "Entertainment", "Fixed"]
     var categoryLabel: UITextField
     
     init(categoryLabel: UITextField) {
@@ -100,6 +100,8 @@ class ViewController: UIViewController {
             budget.monthly_entertainment_deposit = 100
             budget.initial_saving_account = 45000
             budget.byweekly_salary = 3650
+        } else {
+            monthlyReset()
         }
 
         budgetLabel.text = "Budget balance (\(budget.daily_expense.doubleValue)/\(budget.monthly_budget_allocation.doubleValue)):"
@@ -112,6 +114,56 @@ class ViewController: UIViewController {
         educationFundLabel.text = budget.education_fund.stringValue
         clothingFundLabel.text = budget.clothing_fund.stringValue
         savingFundLabel.text = budget.initial_saving_account.stringValue
+        
+    }
+    
+    func monthInfo() -> (Int, Int) {
+        let flags: NSCalendarUnit = .DayCalendarUnit | .MonthCalendarUnit | .YearCalendarUnit
+        let date = NSDate()
+        let components = NSCalendar.currentCalendar().components(flags, fromDate: date)
+        return (components.month, components.day)
+    }
+    
+    func monthlyReset() -> Bool {
+        let (month, day) = monthInfo()
+        if (day != 1 || month == budget.last_reset_month.integerValue) {
+            return false
+        }
+
+        var lastDailyBalance = budget.monthly_budget_allocation.doubleValue - budget.daily_expense
+        var variousDeposit = budget.monthly_clothing_deposit.doubleValue +
+            budget.monthly_education_deposit +
+            budget.monthly_entertainment_deposit
+        
+        budget.initial_saving_account =
+            budget.initial_saving_account +
+            budget.byweekly_salary * 2 +
+            lastDailyBalance -
+            budget.fixed_expense -
+            variousDeposit
+        
+        budget.education_fund =
+            budget.education_fund.doubleValue +
+            budget.monthly_education_deposit -
+            budget.education_expense
+        
+        budget.entertainment_fund =
+            budget.entertainment_fund.doubleValue +
+            budget.monthly_entertainment_deposit -
+            budget.entertainment_expense
+        
+        budget.clothing_fund =
+            budget.clothing_fund.doubleValue +
+            budget.monthly_clothing_deposit -
+            budget.clothing_expense
+        
+        budget.daily_expense = 0
+        budget.fixed_expense = 0
+        budget.education_expense = 0
+        budget.clothing_expense = 0
+        budget.entertainment_expense = 0
+
+        return true
     }
 
     override func didReceiveMemoryWarning() {
@@ -140,16 +192,19 @@ class ViewController: UIViewController {
         var spending = NSString(string: expense.text).doubleValue
         switch (category.text) {
         case categoryDataSource.categories[0]://daily
-            budget.daily_expense = NSNumber(double: budget.daily_expense.doubleValue + spending)
+            budget.daily_expense = budget.daily_expense + spending
             break;
         case categoryDataSource.categories[1]://education
-            budget.education_expense = NSNumber(double: budget.education_expense.doubleValue + spending)
+            budget.education_expense = budget.education_expense + spending
             break;
         case categoryDataSource.categories[2]://clothing
-            budget.clothing_expense = NSNumber(double: budget.clothing_expense.doubleValue + spending)
+            budget.clothing_expense = budget.clothing_expense + spending
             break;
         case categoryDataSource.categories[3]://entertainment
-            budget.entertainment_expense = NSNumber(double: budget.entertainment_expense.doubleValue + spending)
+            budget.entertainment_expense = budget.entertainment_expense + spending
+            break;
+        case categoryDataSource.categories[4]://fixed
+            budget.fixed_expense = budget.fixed_expense + spending
             break;
         default:
             break

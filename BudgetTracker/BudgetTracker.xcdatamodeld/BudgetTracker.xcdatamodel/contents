@@ -9,13 +9,15 @@
         <attribute name="education_fund" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="entertainment_expense" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="entertainment_fund" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="fixed_expense" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="initial_saving_account" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="last_reset_month" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="monthly_budget_allocation" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="monthly_clothing_deposit" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="monthly_education_deposit" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="monthly_entertainment_deposit" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Budget" positionX="-63" positionY="-18" width="128" height="240"/>
+        <element name="Budget" positionX="-63" positionY="-18" width="128" height="270"/>
     </elements>
 </model>

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C9335D801A2BCABD0091DD5F /* Budget.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9335D7F1A2BCABD0091DD5F /* Budget.swift */; };
+		C9335D841A2BD8860091DD5F /* Budget.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9335D831A2BD8860091DD5F /* Budget.swift */; };
 		C9AD7D6B1A2A571E00FBBEDC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AD7D6A1A2A571E00FBBEDC /* AppDelegate.swift */; };
 		C9AD7D6E1A2A571E00FBBEDC /* BudgetTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C9AD7D6C1A2A571E00FBBEDC /* BudgetTracker.xcdatamodeld */; };
 		C9AD7D701A2A571E00FBBEDC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AD7D6F1A2A571E00FBBEDC /* ViewController.swift */; };
@@ -27,7 +27,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		C9335D7F1A2BCABD0091DD5F /* Budget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Budget.swift; sourceTree = "<group>"; };
+		C9335D831A2BD8860091DD5F /* Budget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Budget.swift; sourceTree = SOURCE_ROOT; };
 		C9AD7D651A2A571E00FBBEDC /* BudgetTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BudgetTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9AD7D691A2A571E00FBBEDC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C9AD7D6A1A2A571E00FBBEDC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -79,7 +79,7 @@
 		C9AD7D671A2A571E00FBBEDC /* BudgetTracker */ = {
 			isa = PBXGroup;
 			children = (
-				C9335D7F1A2BCABD0091DD5F /* Budget.swift */,
+				C9335D831A2BD8860091DD5F /* Budget.swift */,
 				C9AD7D6A1A2A571E00FBBEDC /* AppDelegate.swift */,
 				C9AD7D6F1A2A571E00FBBEDC /* ViewController.swift */,
 				C9AD7D711A2A571E00FBBEDC /* Main.storyboard */,
@@ -215,7 +215,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9AD7D701A2A571E00FBBEDC /* ViewController.swift in Sources */,
-				C9335D801A2BCABD0091DD5F /* Budget.swift in Sources */,
+				C9335D841A2BD8860091DD5F /* Budget.swift in Sources */,
 				C9AD7D6B1A2A571E00FBBEDC /* AppDelegate.swift in Sources */,
 				C9AD7D6E1A2A571E00FBBEDC /* BudgetTracker.xcdatamodeld in Sources */,
 			);
