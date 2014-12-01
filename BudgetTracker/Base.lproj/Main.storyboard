@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6206.9" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <deployment defaultVersion="1792" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7026.1"/>
-        <capability name="Constraints with attributes relative to the layout margin" minToolsVersion="6.0"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -55,24 +55,25 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z2S-jw-ao8">
-                                <rect key="frame" x="16" y="290" width="287" height="165"/>
+                                <rect key="frame" x="16" y="314" width="287" height="165"/>
                                 <connections>
                                     <segue destination="gYy-4T-W5P" kind="embed" id="Lpy-ii-cD1"/>
                                 </connections>
                             </containerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Input expense:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7DF-TC-bKp">
-                                <rect key="frame" x="25" y="296" width="114" height="21"/>
+                                <rect key="frame" x="25" y="320" width="114" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JAQ-s2-Mox">
-                                <rect key="frame" x="25" y="325" width="97" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <rect key="frame" x="25" y="349" width="97" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ONH-Tm-MKO">
-                                <rect key="frame" x="185" y="411" width="90" height="30"/>
+                                <rect key="frame" x="185" y="435" width="90" height="30"/>
                                 <state key="normal" title="Add expense">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -81,12 +82,12 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7QU-xX-NKg">
-                                <rect key="frame" x="124" y="373" width="139" height="30"/>
+                                <rect key="frame" x="124" y="397" width="139" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="n6b-DG-wJy">
-                                <rect key="frame" x="142" y="325" width="121" height="30"/>
+                                <rect key="frame" x="142" y="349" width="121" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -97,7 +98,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F5j-es-07A">
-                                <rect key="frame" x="25" y="375" width="41" height="21"/>
+                                <rect key="frame" x="25" y="399" width="41" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -126,12 +127,25 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Funiture fund:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OWh-LD-SEe">
+                                <rect key="frame" x="18" y="285" width="107" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LEl-b0-Ucz">
+                                <rect key="frame" x="221" y="285" width="10" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="q35-xJ-DHd" secondAttribute="trailing" constant="20" id="0bG-fl-kkC"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Kho-Wt-9ln" secondAttribute="trailing" constant="20" id="14h-2P-jiX"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="LEl-b0-Ucz" secondAttribute="trailing" constant="20" id="Aws-PJ-FTI"/>
                             <constraint firstAttribute="trailingMargin" secondItem="8uy-5A-dFT" secondAttribute="trailing" constant="20" id="CQl-pT-XmS"/>
                             <constraint firstAttribute="trailingMargin" secondItem="qFs-cN-WKs" secondAttribute="trailing" constant="20" id="Cn7-7R-qZp"/>
                             <constraint firstAttribute="trailingMargin" secondItem="T4a-qy-IOT" secondAttribute="trailing" constant="20" id="SaT-AK-keh"/>
@@ -153,6 +167,7 @@
                         <outlet property="entertainFundLabel" destination="qFs-cN-WKs" id="IeU-Yj-UDE"/>
                         <outlet property="expense" destination="JAQ-s2-Mox" id="fzZ-gg-p0H"/>
                         <outlet property="expenseInput" destination="JAQ-s2-Mox" id="AdU-dA-iet"/>
+                        <outlet property="furnitureFundLabel" destination="LEl-b0-Ucz" id="SzP-Re-0Fg"/>
                         <outlet property="savingBalance" destination="T4a-qy-IOT" id="Dvk-TM-xah"/>
                         <outlet property="savingFundLabel" destination="HyY-1m-6BL" id="e6W-Jl-5Ly"/>
                         <outlet property="savingLabel" destination="k1n-yM-fSR" id="ERx-NJ-Zcs"/>
