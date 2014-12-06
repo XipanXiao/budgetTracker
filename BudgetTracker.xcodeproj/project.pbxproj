@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C96617E81A2CE8CB00221082 /* Budget.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96617E71A2CE8CB00221082 /* Budget.swift */; };
 		C9AD7D6B1A2A571E00FBBEDC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AD7D6A1A2A571E00FBBEDC /* AppDelegate.swift */; };
 		C9AD7D6E1A2A571E00FBBEDC /* BudgetTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C9AD7D6C1A2A571E00FBBEDC /* BudgetTracker.xcdatamodeld */; };
 		C9AD7D701A2A571E00FBBEDC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AD7D6F1A2A571E00FBBEDC /* ViewController.swift */; };
 		C9AD7D731A2A571E00FBBEDC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9AD7D711A2A571E00FBBEDC /* Main.storyboard */; };
 		C9AD7D751A2A571E00FBBEDC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9AD7D741A2A571E00FBBEDC /* Images.xcassets */; };
 		C9AD7D811A2A571E00FBBEDC /* BudgetTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AD7D801A2A571E00FBBEDC /* BudgetTrackerTests.swift */; };
+		C9C545F11A32B14100823662 /* Budget.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C545F01A32B14100823662 /* Budget.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,7 +27,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		C96617E71A2CE8CB00221082 /* Budget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Budget.swift; sourceTree = "<group>"; };
 		C9AD7D651A2A571E00FBBEDC /* BudgetTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BudgetTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9AD7D691A2A571E00FBBEDC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C9AD7D6A1A2A571E00FBBEDC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -38,6 +37,7 @@
 		C9AD7D7A1A2A571E00FBBEDC /* BudgetTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BudgetTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9AD7D7F1A2A571E00FBBEDC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C9AD7D801A2A571E00FBBEDC /* BudgetTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetTrackerTests.swift; sourceTree = "<group>"; };
+		C9C545F01A32B14100823662 /* Budget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Budget.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,12 +79,12 @@
 		C9AD7D671A2A571E00FBBEDC /* BudgetTracker */ = {
 			isa = PBXGroup;
 			children = (
-				C96617E71A2CE8CB00221082 /* Budget.swift */,
 				C9AD7D6A1A2A571E00FBBEDC /* AppDelegate.swift */,
 				C9AD7D6F1A2A571E00FBBEDC /* ViewController.swift */,
 				C9AD7D711A2A571E00FBBEDC /* Main.storyboard */,
 				C9AD7D741A2A571E00FBBEDC /* Images.xcassets */,
 				C9AD7D6C1A2A571E00FBBEDC /* BudgetTracker.xcdatamodeld */,
+				C9C545F01A32B14100823662 /* Budget.swift */,
 				C9AD7D681A2A571E00FBBEDC /* Supporting Files */,
 			);
 			path = BudgetTracker;
@@ -216,7 +216,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9AD7D701A2A571E00FBBEDC /* ViewController.swift in Sources */,
-				C96617E81A2CE8CB00221082 /* Budget.swift in Sources */,
+				C9C545F11A32B14100823662 /* Budget.swift in Sources */,
 				C9AD7D6B1A2A571E00FBBEDC /* AppDelegate.swift in Sources */,
 				C9AD7D6E1A2A571E00FBBEDC /* BudgetTracker.xcdatamodeld in Sources */,
 			);

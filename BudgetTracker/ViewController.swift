@@ -61,10 +61,32 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        let newItem = NSEntityDescription.insertNewObjectForEntityForName("Budget", inManagedObjectContext: self.managedObjectContext!) as Budget
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let managedContext = managedObjectContext!
+        let fetchRequest = NSFetchRequest(entityName: "Budget")
 
-        budget = newItem
+        var error: NSError?
+        
+        let fetchedResults =
+        managedContext.executeFetchRequest(fetchRequest,
+            error: &error) as [NSManagedObject]?
+        
+        if let results = fetchedResults {
+            if (results.count > 0) {
+                budget = results[0] as Budget
+            }
+        } else {
+        }
+        
+        if (budget == nil) {
+            budget = NSEntityDescription.insertNewObjectForEntityForName("Budget", inManagedObjectContext: self.managedObjectContext!) as Budget
+        }
+        
         initUI()
     }
     
@@ -94,32 +116,36 @@ class ViewController: UIViewController {
     }
     
     func initUIData() {
-        if (budget.monthly_budget_allocation == 0) {
-            budget.monthly_budget_allocation = 2000
+        if (budget.monthly_budget == 0) {
+            budget.monthly_budget = 2000
             budget.monthly_clothing_deposit = 200
             budget.monthly_education_deposit = 100
             budget.monthly_entertainment_deposit = 100
             budget.monthly_furniture_deposit = 100
             
-            budget.byweekly_salary = 3685
-            budget.initial_saving_account =
-                48000 - budget.byweekly_salary.doubleValue * 2 -
-                budget.monthly_budget_allocation.doubleValue
+            budget.monthly_income = 7370
+            budget.saving =
+                48000 - budget.monthly_income.doubleValue -
+                budget.monthly_budget.doubleValue
         }
 
         monthlyReset()
 
-        budgetLabel.text = "Budget balance (\(budget.daily_expense.doubleValue)/\(budget.monthly_budget_allocation.doubleValue)):"
-        budgetBalance.progress = Float(budget.daily_expense.doubleValue/budget.monthly_budget_allocation.doubleValue)
+        budgetLabel.text = "Budget balance (\(budget.balance.doubleValue)/\(budget.monthly_budget.doubleValue)):"
+        budgetBalance.progress = Float(budget.balance.doubleValue/budget.monthly_budget.doubleValue)
         
-        savingLabel.text = "Saving balance (\(budget.initial_saving_account.doubleValue)):"
-        savingBalance.progress = budget.initial_saving_account.floatValue/nextLevel(budget.initial_saving_account);
+        savingLabel.text = "Saving balance (\(budget.saving.doubleValue)):"
+        savingBalance.progress = budget.saving.floatValue/nextLevel(budget.saving);
         
-        entertainFundLabel.text = budget.entertainment_fund.stringValue
-        educationFundLabel.text = budget.education_fund.stringValue
-        clothingFundLabel.text = budget.clothing_fund.stringValue
-        savingFundLabel.text = budget.initial_saving_account.stringValue
-        furnitureFundLabel.text = budget.furniture_fund.stringValue  
+        savingFundLabel.text = budget.saving.stringValue
+
+        entertainFundLabel.text = budget.entertainment_balance.stringValue
+        educationFundLabel.text = budget.education_balance.stringValue
+        clothingFundLabel.text = budget.clothing_balance.stringValue
+        furnitureFundLabel.text = budget.furniture_balance.stringValue
+        
+        var error : NSError?
+        managedObjectContext?.save(&error)
     }
     
     func monthInfo() -> (Int, Int) {
@@ -136,46 +162,35 @@ class ViewController: UIViewController {
             return false
         }
 
-        var lastDailyBalance = budget.monthly_budget_allocation.doubleValue - budget.daily_expense.doubleValue
         var variousDeposit = budget.monthly_clothing_deposit.doubleValue +
             budget.monthly_education_deposit.doubleValue +
             budget.monthly_entertainment_deposit.doubleValue +
             budget.monthly_furniture_deposit.doubleValue
         
-        budget.initial_saving_account =
-            budget.initial_saving_account.doubleValue +
-            budget.byweekly_salary.doubleValue * 2 +
-            lastDailyBalance -
-            budget.fixed_expense.doubleValue -
+        budget.saving =
+            budget.saving.doubleValue +
+            budget.balance.doubleValue +
+            budget.monthly_income.doubleValue -
             variousDeposit
         
-        budget.education_fund =
-            budget.education_fund.doubleValue +
-            budget.monthly_education_deposit.doubleValue -
-            budget.education_expense.doubleValue
+        budget.balance = budget.monthly_budget
         
-        budget.entertainment_fund =
-            budget.entertainment_fund.doubleValue +
-            budget.monthly_entertainment_deposit.doubleValue -
-            budget.entertainment_expense.doubleValue
+        budget.education_balance =
+            budget.education_balance.doubleValue +
+            budget.monthly_education_deposit.doubleValue
         
-        budget.clothing_fund =
-            budget.clothing_fund.doubleValue +
-            budget.monthly_clothing_deposit.doubleValue -
-            budget.clothing_expense.doubleValue
+        budget.entertainment_balance =
+            budget.entertainment_balance.doubleValue +
+            budget.monthly_entertainment_deposit.doubleValue
+        
+        budget.clothing_balance =
+            budget.clothing_balance.doubleValue +
+            budget.monthly_clothing_deposit.doubleValue
 
-        budget.furniture_fund =
-            budget.furniture_fund.doubleValue +
-            budget.monthly_furniture_deposit.doubleValue -
-            budget.furniture_expense.doubleValue
+        budget.furniture_balance =
+            budget.furniture_balance.doubleValue +
+            budget.monthly_furniture_deposit.doubleValue
         
-        budget.daily_expense = 0
-        budget.fixed_expense = 0
-        budget.education_expense = 0
-        budget.clothing_expense = 0
-        budget.entertainment_expense = 0
-        budget.furniture_expense = 0
-
         budget.last_reset_month = month
         return true
     }
@@ -206,22 +221,22 @@ class ViewController: UIViewController {
         var spending = NSString(string: expense.text).doubleValue
         switch (category.text) {
         case categoryDataSource.categories[0]://daily
-            budget.daily_expense = budget.daily_expense.doubleValue + spending
+            budget.balance = budget.balance.doubleValue - spending
             break;
         case categoryDataSource.categories[1]://education
-            budget.education_expense = budget.education_expense.doubleValue + spending
+            budget.education_balance = budget.education_balance.doubleValue - spending
             break;
         case categoryDataSource.categories[2]://clothing
-            budget.clothing_expense = budget.clothing_expense.doubleValue + spending
+            budget.clothing_balance = budget.clothing_balance.doubleValue - spending
             break;
         case categoryDataSource.categories[3]://entertainment
-            budget.entertainment_expense = budget.entertainment_expense.doubleValue + spending
+            budget.entertainment_balance = budget.entertainment_balance.doubleValue - spending
             break;
         case categoryDataSource.categories[4]://furniture
-            budget.furniture_expense = budget.furniture_expense.doubleValue + spending
+            budget.furniture_balance = budget.furniture_balance.doubleValue - spending
             break;
         case categoryDataSource.categories[5]://fixed
-            budget.fixed_expense = budget.fixed_expense.doubleValue + spending
+            budget.saving = budget.saving.doubleValue - spending
             break;
         default:
             break
